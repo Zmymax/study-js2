@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>音乐盒子</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0
+    }
+    .nav{
+        height: 50px;
+        background-color: red;
+        position: relative;
+    }
+    .nav p{
+        color: white;
+        position: absolute;
+        top:15%;
+        left: 5%;
+        font-size: 25px;
+    }
+    .nav button{
+        height: 20px;
+        width: 35px;
+        position: relative;;
+        top:24%;
+        left: 33%;
+        border-bottom-left-radius: 10px;
+        border-top-left-radius: 10px;
+        outline: none;
+    }
+     .nav input{
+         position: absolute;
+         top:25%;
+         left: 35%;
+         width: 230px;
+         height: 20px;
+         border-radius: 30px;
+         border: none;
+         outline: none;
+    }
+    .container{
+        height: 580px;
+    }
+    .left-container img{
+        width: 200px;
+        height: 200px;
+        margin-top: 60px;
+        margin-left: 215px;
+        border-radius: 50%;
+        animation: animated 3s linear infinite;
+    }
+    /*@keyframes animated{*/
+    /*    0%{*/
+    /*        transform: rotate(0deg)*/
+    /*    }*/
+    /*    50%{*/
+    /*        transform: rotate(180deg)*/
+    /*    }*/
+    /*    100%{*/
+    /*        transform: rotate(360deg)*/
+    /*    }*/
+
+    /*}*/
+    .left-container{
+        width: 300px;
+
+        float: left;
+    }
+    .right-container{
+        float: right;
+        width: 500px;
+        margin-top: 30px;
+        margin-right: 50px;
+    }
+    .right-container button{
+        margin-left: 400px;
+        width: 38px;
+        height: 25px;
+        border:none;
+        outline: none;
+    }
+    .a{
+       font-size: 25px;
+    }
+    hr{
+        margin-top: 10px;
+    }
+    .foot{
+        height: 70px;
+        background-color: beige;
+    }
+    #previous{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-left: 80px;
+        margin-top: 15px;
+        outline: none;
+    }
+    #play{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        outline: none;
+        position: relative;
+        /*margin-top: 10px;*/
+    }
+    #next{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        outline: none;
+        position: relative;
+        /*margin-left: 55px;*/
+        /*margin-top: 15px;*/
+    }
+    progress{
+        margin-left: 30px;
+        width: 300px;
+    }
+    .foot img{
+        width: 20px;
+        height: 20px;
+    }
+    .right-container img{
+        width: 20px;
+        height: 20px;
+    }
+</style>
+<body>
+<div class="music ">
+    <div class="nav">
+        <p>网易云音乐</p>
+        <button>🔍</button><input type="text" id="search" placeholder="&nbsp;搜索音乐，歌手，歌词，用户">
+    </div>
+    <div class="container">
+        <div class="left-container">
+            <img src="white/musiclist.png" id="img">
+        </div>
+        <div class="right-container">
+            <label class="a">有幸</label><a href="7.html"><button><img src="white/jt.jpg"></button></a>
+            <br><br>
+            <label>歌手：</label><label></label>
+            <hr size="1" color="black"><br>
+            <p>作曲 : 老光<br>
+                作词 : 老光/裴育<br>
+                编曲：张家维<br>
+                初次见你腼腆的露出微笑<br>
+                却已让我收到恋爱的讯号<br>
+                纷乱世界怦然心动的美好<br>
+                喜欢轻轻吻你在我的怀抱<br>
+                安静感受你那柔软的发梢<br>
+                小小肩膀也有大大的依靠<br>
+                把复杂的生活过简单<br>
+                因为有你相伴<br>
+                我多想就这样牵着你的手到永远<br>
+                有幸与你相爱</p>
+
+        </div>
+    </div>
+    <div class="foot">
+        <button id="previous"><img src="white/previous.png">️</button>
+        <button id="play" onclick="playPause()">▶️️</button>
+        <button id="next">️<img src="white/next.png"></button>
+        <progress id="progress" value="0" max="100"></progress>
+    </div>
+</div>
+</body>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="/static/jQueryRotate.js"></script>
+<script>
+    let audio = new Audio("/static/music.mp3");
+    let playing=false;
+    let rotateTime=0;
+    let rotateId=0;
+    let progressId=0;
+    function playPause(){
+        if (playing){
+            playing=false
+            audio.pause()
+            stopRotate()
+            clearInterval(progressId)
+            $("#play").text("▶️️")
+
+        }else{
+            playing=true
+            audio.play()
+            startRotate()
+            $("#play").text("⏸️️")
+            progressId=setInterval(function () {
+                $("#progress").attr('value',100*audio.currentTime/audio.duration)
+            })
+        }
+    }
+    function startRotate() {
+        rotateId=setInterval(function () {
+            rotateTime++
+          $("#img").rotate(360/1000*rotateTime*2)
+        })
+
+    }
+    function stopRotate() {
+       clearInterval(rotateId)
+    }
+
+
+</script>
+</html>

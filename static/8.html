@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>火车票查询</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0
+    }
+    .search{
+        height: 250px;
+        text-align: center;
+    }
+    .search input{
+        margin-top: 25px;
+        height: 20px;
+        width: 250px;
+    }
+    .search button{
+        height: 30px;
+        width: 330px;
+        background-color: orange;
+        color: white;
+        margin-top: 20px;
+        outline: none;
+    }
+    .search button:hover{
+        opacity: 0.7;
+    }
+    .searchResult{
+        text-align: center;
+    }
+    .searchResult label{
+        margin-left: 20px;
+    }
+    #searchResults{
+        margin-top: 10px;
+    }
+    #searchResults hr{
+        margin-left:160px ;
+    }
+    /*.station{*/
+    /*    margin-left: 420px;*/
+    /*    width: 100px;*/
+    /*}*/
+    .trainno{
+        margin-top: -10px;
+        margin-left: 160px;
+        margin-right: 20px;
+    }
+</style>
+<body>
+<div id="container">
+    <div class="search">
+        <label>出发地</label>&nbsp;&nbsp;&nbsp;<input type="text" required="required" id="placeStart"><br>
+        <label>到达地</label>&nbsp;&nbsp;&nbsp;<input type="text" required="required" id="placeEnd"><br>
+        <label>出发日期</label>&nbsp;<input type="date" ><br>
+        <button>查询</button>
+    </div>
+    <div class="searchResult">
+        <label id="start">--></label><label id="end"></label><label id="date"></label><br><br>
+        <label>车次</label>
+        <label>出发站-到达站</label>
+        <label>出发时间-到达时间</label>
+        <label>历时</label>
+        <label>二等座(快车)/硬座(慢车)票价</label>
+        <label>一等座(快车)/硬卧(慢车)票价</label>
+        <label>商务座(快车)/软卧(慢车)票价</label>
+        <div id="searchResults">
+
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script>
+    $("button").click(function () {
+        var placeStart=$("#placeStart").val()
+        var placeEnd=$("#placeEnd").val()
+        var date=$(`#date`).val()
+
+        $.ajax({
+            type:"GET",
+            contentType:"json",
+            url:"http://127.0.0.1:5000/ticket/api?url=https://api.jisuapi.com/train/station2s?appkey=75136e830c197077%26start="+placeStart+"%26end="+placeEnd+"%26date="+date,
+            success:function (results) {
+                var ticketMessage=JSON.parse(results).result.list
+                $('#searchResults').empty()
+                for(let i=0; i < ticketMessage.length; i++){
+                    var messageData=ticketMessage[i]
+                    var searchResult=$(`#searchResults`)
+                    var container=$(`#container`)
+
+
+
+                    searchResult.append($(
+                     `<label class="trainno">${messageData.trainno}</label>
+                     <label>${messageData.station}-${messageData.endstation}</label>
+                     <label>${messageData.departuretime}-${messageData.arrivaltime}</label>
+                     <label>${messageData.costtime}</label>
+                     <label>¥${messageData.priceed?messageData.priceed:messageData.priceyz}</label>
+                     <label>¥${messageData.priceyd?messageData.priceyd:messageData.priceyw1}</label>
+                     <label>¥${messageData.pricesw?messageData.pricesw:messageData.pricerw1}</label>
+                     <hr color="orange" width="1000px">
+                     <br>`))
+
+
+                    container.append(searchResult)
+                }
+
+
+            }
+        })
+
+
+    })
+
+</script>
+</html>

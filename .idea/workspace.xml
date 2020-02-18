@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="663251aa-681b-48b9-9f9e-3d87c2a9810c" name="Default" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="work" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="package.json" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1XVSGeKBCekjoV1r0SOkQiBbZl1" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static/white" />
+      <recent name="$PROJECT_DIR$/static" />
+      <recent name="$PROJECT_DIR$/static/" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static/white" />
+      <recent name="$PROJECT_DIR$/static" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="1" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="work" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="server" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="work" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/server.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="663251aa-681b-48b9-9f9e-3d87c2a9810c" name="Default" comment="" />
+      <created>1580987085367</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1580987085367</updated>
+      <workItem from="1581129681467" duration="1833000" />
+      <workItem from="1581131708077" duration="17910000" />
+      <workItem from="1581166439835" duration="690000" />
+      <workItem from="1581167157322" duration="1363000" />
+      <workItem from="1581168839567" duration="10307000" />
+      <workItem from="1581222383046" duration="28589000" />
+      <workItem from="1581425679266" duration="196000" />
+      <workItem from="1581495468854" duration="5623000" />
+      <workItem from="1581502075640" duration="1827000" />
+      <workItem from="1581937134487" duration="58000" />
+      <workItem from="1581939056721" duration="790000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="171" y="57" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581913658213">
+      <screen x="48" y="23" width="1318" height="745" />
+    </state>
+    <state x="171" y="57" key="#com.intellij.execution.impl.EditConfigurationsDialog/48.23.1318.745@48.23.1318.745" timestamp="1581913658213" />
+    <state x="456" y="144" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1581308191725">
+      <screen x="44" y="23" width="1322" height="745" />
+    </state>
+    <state x="456" y="144" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/44.23.1322.745@44.23.1322.745" timestamp="1581308191725" />
+    <state x="0" y="23" width="816" height="745" key="find.popup" timestamp="1581130226441">
+      <screen x="48" y="23" width="1318" height="745" />
+    </state>
+    <state x="0" y="23" width="816" height="745" key="find.popup/48.23.1318.745@48.23.1318.745" timestamp="1581130226441" />
+    <state x="372" y="178" key="run.anything.popup" timestamp="1581130951699">
+      <screen x="48" y="23" width="1318" height="745" />
+    </state>
+    <state x="372" y="178" key="run.anything.popup/48.23.1318.745@48.23.1318.745" timestamp="1581130951699" />
+    <state x="348" y="92" width="670" height="676" key="search.everywhere.popup" timestamp="1581600934628">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="348" y="92" width="670" height="676" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1581600934628" />
+  </component>
+</project>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>http请求</title>
+</head>
+<body>
+<button id="btn1" style="border:1px solid black">发送一个 HTTP GET 请求并获取返回结果</button><br>
+<button id="btn2" style="border:1px solid black">发送一个 HTTP Post 发送并获取返回结果</button>
+</body>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+	$("#btn1").click(function(){
+		$.get("/work/demo-get.txt",function(data,status){
+			alert("数据: " + data + "\n状态: " + status);
+		});
+	});
+	$("#btn2").click(function(){
+	    $.post("/work/demo-post.txt",{
+	        name:"zmy",
+	        url:" http://zmy12.gitee.io/dabian"
+	        },
+	        function(data,status){
+	             alert("数据:\n"+data+"\n状态:"+status);
+	        });
+	        });
+});
+</script>
+</html>

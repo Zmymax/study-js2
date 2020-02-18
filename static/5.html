@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>http请求</title>
+</head>
+<style>
+    body{
+       background-color:black;
+       color:white;
+       text-align:center;
+       position:relative;
+    }
+    .date{
+      height:600px;
+    }
+    .date-item{
+      height:200px;
+    }
+    .line1{
+      float:left;
+      height:654px;
+      width:0px;
+      margin-left:0px;
+      margin-top:-10px;
+    }
+    .line2{
+      float:right;
+      height:750px;
+      width:0px;
+      margin-right:0px;
+      margin-top:-10px;
+    }
+    label{
+       line-height:40px;
+    }
+    .weather-item{
+
+       margin-left:125px;
+    }
+
+
+</style>
+<body>
+<span>weather for city:</span><input id="location"><button>查询</button>
+<div class="date" id="weather-container">
+    <hr color="white" size="2">
+    <hr class="line1">
+    <hr class="line2">
+
+</div>
+</body>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+     $("button").click(function(){
+        var location=$("#location").val()
+          $.ajax({
+            type:"GET",
+            contentType:"json",
+            url:"http://127.0.0.1:5000/weather/api?location="+location,
+            success:function(result){
+               var weatherlist=JSON.parse(result).results[0].daily
+               for(var i=0;i<weatherlist.length;i++){
+                  var weather=weatherlist[i];
+                  var weatherContainer=$('#weather-container')
+                  var weatherItem=$('<div class="weather-item"></div>')
+                  var dateItem=$('<div class="date-item"></div>')
+
+                   weatherItem.append($(`<img src=/static/white/${weather.code_day}@2x.png>`))
+                   weatherContainer.append(weatherItem)
+                   weatherItem.append(dateItem)
+                   weatherContainer.append('<hr color="white" size="2">')
+                   dateItem.append($(`<label>日期：</label><label>${weather.date}</label><br>`))
+                   dateItem.append($(`<label>日间天气：</label><label >${weather.text_day}</label><br>`))
+                   dateItem.append($(`<label>夜间天气：</label><label>${weather.text_night}</label><br>`))
+                   dateItem.append($(`<label>温度：</label><label>${weather.low}-${weather.high}℃</label><br>`))
+                   dateItem.append($(`<label>湿度：</label><label>${weather.humidity}</label><br>`))
+
+               }
+            }
+
+          });
+
+
+     });
+</script>
+</html>

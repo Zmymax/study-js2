@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>播放列表</title>
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1291774_35pgxthge3t.css">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0
+    }
+
+    .nav {
+        height: 50px;
+        background-color: red;
+        position: relative;
+    }
+
+    .nav p {
+        color: white;
+        position: absolute;
+        top: 15%;
+        left: 5%;
+        font-size: 25px;
+    }
+
+    .nav input {
+        position: absolute;
+        top: 25%;
+        left: 35%;
+        width: 230px;
+        height: 20px;
+        border-radius: 30px;
+        border: none;
+        outline: none;
+    }
+
+    .nav button {
+        height: 20px;
+        width: 35px;
+        position: relative;;
+        top: -17px;
+        left: 29%;
+        border-bottom-left-radius: 10px;
+        border-top-left-radius: 10px;
+        outline: none;
+    }
+
+    .nav img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-left: 15px;
+        margin-top: 6px;
+    }
+
+    #email {
+        color: white;
+        position: relative;
+        left: 1100px;
+        top: -10px;
+        font-size: 20px;
+    }
+
+    #set {
+        color: white;
+        position: relative;
+        left: 1150px;
+        top: -10px;
+        font-size: 20px;
+    }
+
+    .container {
+        height: 580px;
+    }
+
+    .containerLeft {
+        border-right: solid #d0d0b7 1px;
+        height: 580px;
+        width: 200px;
+        float: left;
+    }
+
+    .containerLeft label {
+        font-size: 13px;
+        color: rgba(104, 104, 90, 0.98);
+        margin-left: 10px;
+    }
+
+    .containerRight {
+        float: right;
+        width: 700px;
+        margin-right: 100px;
+    }
+
+    .containerLeft li {
+        line-height: 35px;
+        margin-left: 20px;
+        list-style: none;
+    }
+
+    .containerLeft i {
+        margin-left: 70px;
+    }
+
+    .containerLeft ul li i {
+        margin-left: 0px;
+        margin-right: 10px;
+    }
+
+    .introLeft {
+        width: 60px;
+        float: left;
+    }
+
+    .introRight {
+        width: 600px;
+        margin-top: 20px;
+    }
+
+    .introLeft img {
+        width: 200px;
+        height: 200px;
+        margin-left: -170px;
+        margin-top: 10px;
+    }
+
+    .introRight img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+
+    #songsheet {
+        background-color: red;
+        color: white;
+        margin-top: 10px;
+        border-radius: 5px;
+        width: 50px;
+        height: 25px;
+    }
+
+    #singer {
+        font-size: 22px;
+        color: black;
+    }
+
+    .btn button {
+        width: 100px;
+        height: 30px;
+        margin-top: 20px;
+    }
+
+    .introRight label {
+        font-size: 10px;
+        color: rgba(104, 104, 90, 0.98);
+    }
+    .musicList {
+        margin-top: 50px;
+        margin-left: -170px;
+    }
+    .musicList1 label{
+        margin-left: 150px;
+    }
+    #a{
+        height: 200px;
+        overflow: auto;
+    }
+
+    .found {
+        margin-left: 130px;
+        margin-top: -40px;
+    }
+
+    .list1 button {
+        width: 80px;
+        height: 30px;
+        margin-right: 5px;
+    }
+
+    #firstList1 {
+        background-color: red;
+        color: white;
+        border: solid red 1px;
+    }
+
+    #handle {
+        width: 60px;
+        height: 25px;
+        margin-left: 30px;
+    }
+
+    #title {
+        width: 300px;
+        height: 25px;
+    }
+
+    #singer1 {
+        width: 170px;
+        height: 25px;
+    }
+
+    #collect {
+        width: 100px;
+        height: 25px;
+    }
+
+    #time {
+        width: 80px;
+        height: 25px;
+    }
+
+    .musicList li {
+        float: left;
+        margin-left: 10px;
+        list-style: none;
+        margin-top: 10px;
+    }
+
+    .musicList ul li:nth-child(4) {
+        margin-left: 100px;
+    }
+
+    .musicList ul li:nth-child(5) {
+        margin-left: 150px;
+    }
+
+    .musicList ul li:nth-child(6) {
+        margin-left: 120px;
+    }
+
+    .musicList ul li:nth-child(7) {
+        margin-left: 80px;
+    }
+
+
+
+    .musicList input {
+        border-radius: 30px;
+        outline: none;
+        border: #d0d0b7 solid 1px;
+        margin-left: 350px;
+        height: 17px;
+    }
+
+    .Play {
+        border-top: solid #d0d0b7 1px;
+        margin-top: 30px;
+    }
+
+    .Play img {
+        margin-top: 10px;
+        margin-left: 10px;
+    }
+
+    .Play img:hover {
+        opacity: 0.5;
+    }
+
+    .Play p {
+        top: -60px;
+        left: 80px;
+        position: relative;
+    }
+
+    .Play label {
+        top: -60px;
+        left: 70px;
+        position: relative;
+    }
+
+    .foot {
+        height: 70px;
+        background-color: beige;
+    }
+
+    #previous {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-left: 25px;
+        margin-top: 15px;
+        outline: none;
+    }
+
+    #play {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        outline: none;
+        position: relative;
+    }
+
+    #next {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        outline: none;
+        position: relative;
+    }
+
+    progress {
+        margin-left: 30px;
+        width: 300px;
+    }
+
+    .foot img {
+        width: 20px;
+        height: 20px;
+    }
+</style>
+<body>
+<div id="music">
+    <div class="nav">
+        <img src="white/wyy.png">
+        <p>网易云音乐</p>
+        <button id="search">🔍</button>
+        <input id="musicname" type="text" placeholder="&nbsp;搜索音乐，歌手，歌词，用户">
+        <i id="email" class="iconfont">&#xe617;</i>
+        <i id="set" class="iconfont">&#xe69d;</i>
+    </div>
+    <div class="container">
+        <div class="containerLeft">
+            <label>推荐</label>
+            <ul>
+                <li><i class="iconfont">&#xe644;</i>发现音乐</li>
+                <li><i class="iconfont">&#xe6ae;</i>私人FM</li>
+                <li><i class="iconfont">&#xe608;</i>MV</li>
+                <li><i class="iconfont">&#xe606;</i>朋友</li>
+            </ul>
+            <label>我的音乐</label><i class="iconfont">&#xe605;</i>
+            <ul>
+                <li><i class="iconfont">&#xe71f;</i>iTunes音乐</li>
+                <li><i class="iconfont">&#xe623;</i>下载的音乐</li>
+                <li><i class="iconfont">&#xe638;</i>我的歌手</li>
+                <li><i class="iconfont">&#xe619;</i>我的电台</li>
+            </ul>
+            <label>创建的歌单</label><i class="iconfont">&#xe609;</i>
+            <ul>
+                <li id="likeMusic"><i class="iconfont">&#xe61a;</i>我喜欢的音乐</li>
+            </ul>
+            <label>收藏的歌单</label>
+            <ul>
+                <li><i class="iconfont">&#xe640;</i>化妆拍照BGM</li>
+                <li><i class="iconfont">&#xe640;</i>QQ飞车BGM</li>
+            </ul>
+            <div class="Play">
+                <a href="6.html"><img src="white/musiclist.png"></a>
+                <p>追&nbsp;&nbsp;<i class="iconfont">&#xe8b0;</i></p>
+                <label>奶昔<i class="iconfont">&#xe61a;</i></label>
+            </div>
+        </div>
+        <div class="containerRight">
+            <div class="intro">
+                <div class="introLeft">
+                    <img src="white/musiclist.png">
+                </div>
+                <div class="introRight">
+                    <button id="songsheet">歌单</button>
+                    <label id="singer">歌手·当打之年第一期现场及原曲合集</label><br>
+                    <br>
+                    <img src="white/wyy.png">
+                    <div class="found"><span>网易云音乐 </span><label>2020-02-07创建</label></div>
+                    <br>
+                    <div class="btn">
+                        <button><i class="iconfont">&#xe634;</i>播放全部<i class="iconfont">&#xe60a;</i></button>
+                        <button><i class="iconfont">&#xe61a;</i>收藏</button>
+                        <button><i class="iconfont">&#xe8b0;</i>分享</button>
+                        <button><i class="iconfont">&#xe623;</i>下载全部</button>
+                    </div>
+                    <br><label>标签：流行/影视原声</label><br>
+                    <label>简介：网易云音乐独家音频同步上线，湖南卫视音乐竞技节目《歌手·当打之年》重磅回归！</label>
+                </div>
+            </div>
+            <div class="musicList" id="musiclist1">
+                <div class="list1">
+                    <button id="firstList1">歌曲列表</button>
+                    <button>评论(1w+)</button>
+                    <button>收藏者</button>
+                    <input placeholder="🔍搜索歌单音乐">
+                </div>
+                <hr width="950px" color="red" size="2">
+                <button id="handle">操作</button>
+                <button id="title">音乐标题</button>
+                <button id="singer1">歌手</button>
+                <button id="collect">专辑</button>
+                <button id="time">时长</button>
+                <ul id="a">
+                    <li id="musiclist">01</li>
+                    <li><i class="iconfont">&#xe623;</i></li>
+                    <li><i class="iconfont">&#xe61a;</i></li>
+                    <li id="play2" onclick="playPause()">追(Cover:陈壹千)</li>
+                    <li>奶昔</li>
+                    <li>追</li>
+                    <li>03:39</li><br><br>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div class="foot">
+        <button id="previous"><img src="white/previous.png">️</button>
+        <button id="play" onclick="playPause()">▶️</button>
+        <button id="next">️<img src="white/next.png"></button>
+        <progress id="progress" value="0" max="100"></progress>
+    </div>
+</div>
+</body>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="/static/jQueryRotate.js"></script>
+<script src="/static/move.js"></script>
+<script>
+    let audio = new Audio("/static/music.mp3");
+    let playing = false;
+    let rotateTime = 0;
+    let rotateId = 0;
+    let progressId = 0;
+
+    function playPause() {
+        if (playing) {
+            playing = false
+            audio.pause()
+            stopRotate()
+            clearInterval(progressId)
+            $("#play").text("▶️")
+
+        } else {
+            playing = true
+            audio.play()
+            startRotate()
+            $("#play").text("⏸️️")
+            progressId = setInterval(function () {
+                $("#progress").attr('value', 100 * audio.currentTime / audio.duration)
+            })
+        }
+    }
+
+    function startRotate() {
+        rotateId = setInterval(function () {
+            rotateTime++
+            $("#img").rotate(360 / 1000 * rotateTime * 2)
+        })
+
+    }
+
+    function stopRotate() {
+        clearInterval(rotateId)
+    }
+
+    $("#likeMusic").click(function () {
+        $.ajax({
+            type: "GET",
+            contentType: "json",
+            url: "http://127.0.0.1:5000/common/api?url=https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg?notice=0%26platform=h5%26tpl=3%26page=detail%26type=top%26topid=36",
+            success: function (result) {
+                var musiclist = JSON.parse(result).songlist
+                for (var i = 1; i < musiclist.length; i++) {
+                    var list = musiclist[i]
+                    var musiclist1 = $('#a')
+                    var musicList = $('<ul class="musicList1"><li></li></ul><br>')
+
+                    musicList.append($(`<span>0${list.cur_count}</span><label id="">${list.data.songname}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${list.data.singer[0].name}</label>`))
+                    musiclist1.append(musicList)
+                }
+            }
+        })
+    })
+
+
+
+</script>
+
+</html>

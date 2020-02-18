@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>http请求</title>
+</head>
+<style>
+    body{
+       background-color:black;
+       color:white;
+       text-align:center;
+       position:relative;
+    }
+    .date{
+      height:600px;
+    }
+    .date-item{
+      height:200px;
+    }
+    .line1{
+      float:left;
+      height:654px;
+      width:0px;
+      margin-left:0px;
+      margin-top:-10px;
+    }
+    .line2{
+      float:right;
+      height:750px;
+      width:0px;
+      margin-right:0px;
+      margin-top:-10px;
+    }
+    #img1{
+      position:absolute;
+      top:100px;
+      left:500px;
+    }
+    #img2{
+       position:absolute;
+      top:300px;
+      left:500px;
+    }
+    #img3{
+      position:absolute;
+      top:530px;
+      left:500px;
+    }
+    label{
+       line-height:40px;
+    }
+    .weather-item{
+
+       margin-left:125px;
+    }
+
+
+</style>
+<body>
+<span>weather for city:</span><input id="location"><button>查询</button>
+<div class="date">
+    <hr color="white" size="2">
+    <hr class="line1">
+    <hr class="line2">
+
+    <div class="weather-item">
+        <img id="img1" src="">
+        <div class="date-item">
+            <label>日期：</label><label id="date1"></label><br>
+            <label>日间天气：</label><label id="text_day1"></label><br>
+            <label>夜间天气：</label><label id="text_night1"></label><br>
+            <label>温度:</label><label id="low1"></label><label id="high1"></label><br>
+            <label>湿气：</label><label id="humidity1"></label>
+        </div>
+    </div>
+
+    <hr color="white" size="2">
+
+    <div class="weather-item">
+        <img id="img2" src="">
+        <div class="date-item">
+            <label>日期：</label><label id="date2"></label><br>
+            <label>日间天气：</label><label id="text_day2"></label><br>
+            <label>夜间天气：</label><label id="text_night2"></label><br>
+            <label>温度：</label><label id="low2"></label><label id="high2"></label><br>
+            <label>湿气：</label><label id="humidity2"></label>
+        </div>
+    </div>
+
+    <hr color="white" size="2">
+
+    <div class="weather-item">
+        <img id="img3" src="">
+        <div class="date-item">
+            <label>日期：</label><label id="date3"></label><br>
+            <label>日间天气：</label><label id="text_day3"></label><br>
+            <label>夜间天气：</label><label id="text_night3"></label><br>
+            <label>温度：</label><label id="low3"></label><label id="high3"></label><br>
+            <label>湿气：</label><label id="humidity3"></label>
+        </div>
+    </div>
+
+    <hr color="white" size="2">
+</div>
+</body>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+     $("button").click(function(){
+        var location=$("#location").val()
+          $.ajax({
+            type:"GET",
+            contentType:"json",
+            url:"http://127.0.0.1:5000/weather/api?location="+location,
+            success:function(result){
+               var weatherlist=JSON.parse(result).results[0].daily
+               $("#date1").text(weatherlist[0].date)
+               $("#text_day1").text(weatherlist[0].text_day)
+               $("#text_night1").text(weatherlist[0].text_night)
+               $("#high1").text(weatherlist[0].high+' ℃')
+               $("#low1").text(weatherlist[0].low+'-')
+               $("#humidity1").text(weatherlist[0].humidity)
+               $("#img1").attr("src",'/static/white/'+weatherlist[0].code_day+'@2x.png')
+
+               $("#date2").text(weatherlist[1].date)
+               $("#text_day2").text(weatherlist[1].text_day)
+               $("#text_night2").text(weatherlist[1].text_night)
+               $("#high2").text(weatherlist[1].high+' ℃')
+               $("#low2").text(weatherlist[1].low+'-')
+               $("#humidity2").text(weatherlist[1].humidity)
+               $("#img2").attr("src",'/static/white/'+weatherlist[1].code_day+'@2x.png')
+
+               $("#date3").text(weatherlist[2].date)
+               $("#text_day3").text(weatherlist[2].text_day)
+               $("#text_night3").text(weatherlist[2].text_night)
+               $("#high3").text(weatherlist[2].high+' ℃')
+               $("#low3").text(weatherlist[2].low+'-')
+               $("#humidity3").text(weatherlist[2].humidity)
+               $("#img3").attr("src",'/static/white/'+weatherlist[2].code_day+'@2x.png')
+
+
+            }
+
+          });
+
+
+     });
+</script>
+</html>

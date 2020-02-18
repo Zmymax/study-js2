@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>12306车票查询</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0
+    }
+
+    .nav {
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        margin-left: 100px;
+        border: solid #298cce 1px;
+        border-radius: 3px;
+        height: 70px;
+        width: 1150px;
+        background: #eef1f8;
+    }
+
+    .nav label, input, button {
+        margin-top: 20px;
+    }
+
+    .nav input {
+        width: 150px;
+        height: 18px;
+        line-height: 18px;
+        border: 1px solid #cfcdc7;
+        background: #fff;
+        padding: 5px 0 5px 5px;
+        margin-right: 10px;
+        color: #999;
+        outline: none;
+    }
+
+    .nav button {
+        height: 25px;
+        background: orange;
+        width: 100px;
+        outline: none;
+        border-radius: 5px;
+    }
+
+    .t-list th {
+        border: #298cce;
+        color: white;
+        background: #298cce;
+    }
+
+    .containerHead {
+        border: solid #298cce 1px;
+        height: 48px;
+        width: 1150px;
+        margin-left: 100px;
+    }
+    #containerBody{
+        border: solid #298cce 1px;
+        height: 48px;
+        width: 1150px;
+    }
+
+
+</style>
+<body>
+<div>
+    <div class="nav">
+        <label>出发地</label><input id="placeStart" type="text">
+        <label>--></label>
+        <label>目的地</label><input id="placeEnd" type="text">
+        <label>出发日</label><input id="date" type="date">
+        <button id="search">查询</button>
+    </div>
+    <div class="containerHead">
+        <table border="1" class="table">
+            <thead>
+            <tr class="t-list">
+                <th width="90" colspan="1" rowspan="1">车次</th>
+                <th width="160" colspan="1" rowspan="1">出发站-到达站</th>
+                <th width="160" colspan="1" rowspan="1">出发时间-到达时间</th>
+                <th width="120" colspan="1" rowspan="1"><span>历时</span>
+                </th>
+                <th width="80" colspan="1" rowspan="1">商务座<br clear="none"/>
+                    特等座
+                </th>
+                <th width="80" colspan="1" rowspan="1">一等座</th>
+                <th width="80" colspan="1" rowspan="1">二等座</th>
+                <th width="80" colspan="1" rowspan="1">软卧<br clear="none"/>
+                    一等卧
+                </th>
+                <th width="80" colspan="1" rowspan="1">硬卧<br clear="none"/>
+                    二等卧
+                </th>
+                <th width="80" colspan="1" rowspan="1">硬座</th>
+                <th width="80" colspan="1" rowspan="1">其他</th>
+                <th width="80" colspan="1" rowspan="1">备注</th>
+            </tr>
+            </thead>
+            <tbody id="containerBody"></tbody>
+        </table>
+
+
+    </div>
+</div>
+</body>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script>
+    $("#search").click(function () {
+        var placeStart = $("#placeStart").val()
+        var placeEnd = $("#placeEnd").val()
+        var date = $(`#date`).val()
+
+        $.ajax({
+            type: "GET",
+            contentType: "json",
+            url: "http://127.0.0.1:5000/ticket/api?url=https://api.jisuapi.com/train/station2s?appkey=75136e830c197077%26start=" + placeStart + "%26end=" + placeEnd + "%26date=" + date,
+            success: function (results) {
+                var ticketMessage = JSON.parse(results).result.list
+                $(".tr-list1").remove()
+                for (let i = 0; i < ticketMessage.length; i++) {
+                    var messageData = ticketMessage[i]
+                    var containerBody=$('#containerBody')
+                    var searchResult = $('<tr class="tr-list1"></tr>')
+                    var tdlist1=$(`<td id="${messageData.trainno}-list1"></td>`)
+                    var tdlist2=$(`<td id="${messageData.trainno}-list2"></td>`)
+                    var tdlist3=$(`<td id="${messageData.trainno}-list3"></td>`)
+                    var tdlist4=$(`<td id="${messageData.trainno}-list4"></td>`)
+                    var tdlist5=$(`<td id="${messageData.trainno}-list5"></td>`)
+                    var tdlist6=$(`<td id="${messageData.trainno}-list6"></td>`)
+                    var tdlist7=$(`<td></td>`)
+                    var tdlist8=$(`<td></td>`)
+
+
+                    searchResult.append($(`<td>&nbsp;&nbsp;&nbsp;&nbsp;${messageData.trainno}<span id="${messageData.trainno}-number">▼</span></td>`))
+                    searchResult.append($(`<td>&nbsp;&nbsp;${messageData.station}-${messageData.endstation}</td>`))
+                    searchResult.append($(`<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${messageData.departuretime}-${messageData.arrivaltime}</td>`))
+                    searchResult.append($(`<td>&nbsp;&nbsp;&nbsp;&nbsp;${messageData.costtime}</td>`))
+                    tdlist1.append($(`<span id="${messageData.trainno }-number1" style="display: inline">&nbsp;&nbsp;¥${messageData.pricesw}</span>`))
+                    tdlist2.append($(`<span id="${messageData.trainno}-number2" style="display: inline">&nbsp;&nbsp;¥${messageData.priceyd}</span>`))
+                    tdlist3.append($(`<span id="${messageData.trainno}-number3" style="display: inline">&nbsp;&nbsp;¥${messageData.priceed}</span>`))
+                    tdlist4.append($(`<span id="${messageData.trainno}-number4" style="display: inline">&nbsp;&nbsp;¥${messageData.pricerw1}</span>`))
+                    tdlist5.append($(`<span id="${messageData.trainno}-number5" style="display: inline">&nbsp;&nbsp;¥${messageData.priceyw1}</span>`))
+                    tdlist6.append($(`<span id="${messageData.trainno}-number6" style="display: inline">&nbsp;&nbsp;¥${messageData.priceyz}</span>`))
+                    tdlist7.append($(`<span></span>`))
+                    tdlist8.append($(`<span></span>`))
+                    // containerHead.append($(`<hr color="#298cce" width="1200px" size="1"><br>`))
+
+                    searchResult.append(tdlist1)
+                    searchResult.append(tdlist2)
+                    searchResult.append(tdlist3)
+                    searchResult.append(tdlist4)
+                    searchResult.append(tdlist5)
+                    searchResult.append(tdlist6)
+                    searchResult.append(tdlist7)
+                    searchResult.append(tdlist8)
+                    containerBody.append(searchResult)
+                }
+                getTicketLeft(placeStart,placeEnd)
+            }
+        })
+
+    })
+
+    function getTicketLeft(placeStart,placeEnd) {
+        $.ajax({
+            type: "GET",
+            contentType: "json",
+            url: "http://127.0.0.1:5000/ticket/api?url=https://api.jisuapi.com/train/ticket?appkey=75136e830c197077%26start=" + placeStart + "%26end=" + placeEnd + "%26date=" + date,
+            success: function (results) {
+                var ticketMessage = JSON.parse(results).result.list
+                // $('#containerBodys').empty()
+                for (let i = 0; i < ticketMessage.length; i++) {
+                    var messageData1 = ticketMessage[i]
+                    var tdlist1=$(`#${messageData1.trainno}-list1`)
+                    var tdlist2=$(`#${messageData1.trainno}-list2`)
+                    var tdlist3=$(`#${messageData1.trainno}-list3`)
+                    var tdlist4=$(`#${messageData1.trainno}-list4`)
+                    var tdlist5=$(`#${messageData1.trainno}-list5`)
+                    var tdlist6=$(`#${messageData1.trainno}-list6`)
+
+                    tdlist1.append($(`<br><span id="${messageData1.trainno}-price1" style="display: none">&nbsp;&nbsp;&nbsp;&nbsp;${messageData1.numsw}</span>`))
+                    tdlist2.append($(`<br><span id="${messageData1.trainno}-price2" style="display: none">&nbsp;&nbsp;&nbsp;&nbsp;${messageData1.numyd}</span>`))
+                    tdlist3.append($(`<br><span id="${messageData1.trainno}-price3" style="display: none">&nbsp;&nbsp;&nbsp;&nbsp;${messageData1.numed}</span>`))
+                    tdlist4.append($(`<br><span id="${messageData1.trainno}-price4" style="display: none">&nbsp;&nbsp;&nbsp;&nbsp;${messageData1.numrw1}</span>`))
+                    tdlist5.append($(`<br><span id="${messageData1.trainno}-price5" style="display: none">&nbsp;&nbsp;&nbsp;&nbsp;${messageData1.numyw1}</span>`))
+                    tdlist6.append($(`<br><span id="${messageData1.trainno}-price6" style="display: none">&nbsp;&nbsp;&nbsp;&nbsp;${messageData1.numyz}</span>`))
+                    createListener(messageData1.trainno)
+                }
+
+            }
+        })
+    }
+
+    function createListener(trainNo){
+        $(`#${trainNo}-number`).click(function(){
+            $(`#${trainNo}-price1`).attr("style",'display:inline')
+            $(`#${trainNo}-price2`).attr("style",'display:inline')
+            $(`#${trainNo}-price3`).attr("style",'display:inline')
+            $(`#${trainNo}-price4`).attr("style",'display:inline')
+            $(`#${trainNo}-price5`).attr("style",'display:inline')
+            $(`#${trainNo}-price6`).attr("style",'display:inline')
+            $(`#${trainNo}-number1`).attr("style",'display:none')
+            $(`#${trainNo}-number2`).attr("style",'display:none')
+            $(`#${trainNo}-number3`).attr("style",'display:none')
+            $(`#${trainNo}-number4`).attr("style",'display:none')
+            $(`#${trainNo}-number5`).attr("style",'display:none')
+            $(`#${trainNo}-number6`).attr("style",'display:none')
+        })
+    }
+
+
+</script>
+
+</html>
